@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的第一个 Vercel 网页</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Microsoft YaHei", sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      transition: background 0.5s;
+    }
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      width: 320px;
+    }
+    h1 { margin-top: 0; color: #333; }
+    #time { color: #888; margin-bottom: 20px; }
+    #count { font-size: 48px; font-weight: bold; color: #667eea; margin: 10px 0; }
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 8px;
+      background: #667eea;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover { opacity: 0.85; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Hello, Vercel! 🚀</h1>
+    <div id="time"></div>
+    <p>你点击了</p>
+    <div id="count">0</div>
+    <p>次</p>
+    <button onclick="addCount()">点我 +1</button>
+    <button onclick="changeColor()">换个颜色</button>
+  </div>
+
+  <script>
+    let count = 0;
+
+    function addCount() {
+      count++;
+      document.getElementById("count").textContent = count;
+    }
+
+    function changeColor() {
+      const colors = [
+        "linear-gradient(135deg, #667eea, #764ba2)",
+        "linear-gradient(135deg, #f093fb, #f5576c)",
+        "linear-gradient(135deg, #4facfe, #00f2fe)",
+        "linear-gradient(135deg, #43e97b, #38f9d7)",
+        "linear-gradient(135deg, #fa709a, #fee140)"
+      ];
+      const random = colors[Math.floor(Math.random() * colors.length)];
+      document.body.style.background = random;
+    }
+
+    function updateTime() {
+      document.getElementById("time").textContent =
+        "现在时间：" + new Date().toLocaleString("zh-CN");
+    }
+    updateTime();
+    setInterval(updateTime, 1000);
+  </script>
+</body>
+</html>
